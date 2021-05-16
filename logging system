@@ -1,0 +1,82 @@
+//logging
+
+bot.banAddCommand({ 
+channel: "$getServerVar[modlogs]",
+code: `
+$title[Ban | Case 1]
+$color[RED]
+$description[
+**Offender:** $userTag
+**Responsible Moderator:** $getAuditlogs[1;$authorID;MEMBER_BAN_ADD;$guildID;{executor.tag}]
+]
+$footer[ID: $authorID]
+$addTimestamp
+`
+})
+bot.onBanAdd()
+
+bot.banRemoveCommand({ 
+channel: "$getServerVar[modlogs]",
+code: `
+$title[Unban | Case 1]
+$color[GREEN]
+$description[
+**Offender:** $userTag
+**Responsible Moderator:** $getAuditlogs[1;$authorID;MEMBER_BAN_REMOVE;$guildID;{executor.tag}]
+]
+$footer[ID: $authorID]
+$addTimestamp
+`
+})
+bot.onBanRemove()
+
+bot.channelCreateCommand({ 
+channel: "$getServerVar[modlogs]", 
+code: `
+Channel Created:
+$newChannel[name]
+`
+})
+bot.onChannelCreate()
+
+bot.joinCommand({ 
+channel: "$getServerVar[modlogs]", 
+code: `
+Welcome to $serverName, $username!
+`
+})
+bot.onJoined()
+
+bot.leaveCommand({ 
+channel: "$getServerVar[modlogs]", 
+code: `Goodbye, $username, hope you had a good stay at $serverName
+`
+})
+bot.onLeave()
+
+bot.updateCommand({
+channel: "$getServerVar[modlogs]", 
+code: `Message edited from $username in <#$channelUsed>:
+$message
+Old message: $oldMessage
+`
+})
+bot.onMessageUpdate()
+
+bot.roleCreateCommand({ 
+channel: "$getServerVar[modlogs]", 
+code: `
+Role Created:
+$newRole[name]
+`
+})
+bot.onRoleCreate()
+
+bot.roleDeleteCommand({ 
+channel: "$getServerVar[modlogs]", 
+code: `
+Role Deleted:
+Role Name: $oldRole[name]
+`
+})
+bot.onRoleDelete()
