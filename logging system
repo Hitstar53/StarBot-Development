@@ -1,9 +1,13 @@
-//logging
+//logging System Testing
+//default log callbacks and codes
+modlogs = setup
+message logs = mot setup
+server logs = not setup 
 
 bot.banAddCommand({ 
 channel: "$getServerVar[modlogs]",
 code: `
-$title[Ban | Case 1]
+$title[Ban | Case <variable setup needed>]
 $color[RED]
 $description[
 **Offender:** $userTag
@@ -18,7 +22,7 @@ bot.onBanAdd()
 bot.banRemoveCommand({ 
 channel: "$getServerVar[modlogs]",
 code: `
-$title[Unban | Case 1]
+$title[Unban | Case <variable setup needed>]
 $color[GREEN]
 $description[
 **Offender:** $userTag
