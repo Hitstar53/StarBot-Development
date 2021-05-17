@@ -1,0 +1,57 @@
+module.exports = ({
+name: "memberlog",
+code: `
+$if[$message[1]==remove]
+$setServerVar[memberlog;0]
+$color[RANDOM]
+$channelSendMessage[$getServerVar[memberlog];<@$authorID> - Member Log Channel was removed by $userTag]
+$else
+$if[$channelExists[$findServerChannel[$message]]==true]
+$setServerVar[memberlog;$findServerChannel[$message]]
+$description[<#$findServerChannel[$message]> set as member Log Chaanel from <#$channelCategoryID[$findServerChannel[$message]]> Category.]
+$color[RANDOM]
+$endif
+$endif 
+$argsCheck[>1;{title:Missing Arguments}{description:$getServerVar[prefix]memberlog <#channel/ID/remove>}{color:RED}]
+$onlyPerms[manageserver;{title:Missing Permissions}{description:Missing Manage Server permission}{color:RED}]
+`
+})
+
+module.exports = ({
+name: "modlog",
+aliases: ["setup-modlog"],
+code: `
+$if[$message[1]==remove]
+$setServerVar[modlogs;0]
+$color[RANDOM]
+$channelSendMessage[$getServerVar[modlogs];<@$authorID> - Mod Logs Channel was removed by $username #$discriminator[$authorID].]
+$suppressErrors
+$else
+$if[$channelExists[$findServerChannel[$message]]==true]
+$setServerVar[modlogs;$findServerChannel[$message]]
+$description[<#$findServerChannel[$message]> set as Mod Logs Chaanel from <#$channelCategoryID[$findServerChannel[$message]]> Category.]
+$color[RANDOM]
+$endif
+$endif 
+$argsCheck[>1;{title:Missing Arguments}{description:$getServerVar[prefix]modlog <#channel/ID/remove>}{color:RED}]
+$onlyPerms[manageserver;{title:Missing Permissions}{description:Missing Manage Server permission}{color:RED}]`
+})
+
+module.exports = ({
+name: "serverlog",
+code: `
+$if[$message[1]==remove]
+$setServerVar[serverlog;0]
+$color[RANDOM]
+$channelSendMessage[$getServerVar[serverlog];<@$authorID> - Server Log Channel was removed by $userTag]
+$else
+$if[$channelExists[$findServerChannel[$message]]==true]
+$setServerVar[serverlog;$findServerChannel[$message]]
+$description[<#$findServerChannel[$message]> set as server Log Chaanel from <#$channelCategoryID[$findServerChannel[$message]]> Category.]
+$color[RANDOM]
+$endif
+$endif 
+$argsCheck[>1;{title:Missing Arguments}{description:$getServerVar[prefix]serverlog <#channel/ID/remove>}{color:RED}]
+$onlyPerms[manageserver;{title:Missing Permissions}{description:Missing Manage Server permission}{color:RED}]
+`
+})
