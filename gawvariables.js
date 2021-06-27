@@ -1,5 +1,7 @@
 bot.variables({
-pene: "",
-timega: "",
-gaid: ""
+gawtime: "",
+gawwinners: "",
+gawprize: "",
+gawreq: "",
+gawid: ""
 })
